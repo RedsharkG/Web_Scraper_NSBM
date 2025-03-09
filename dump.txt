@@ -1,0 +1,29 @@
+import requests
+from bs4 import BeautifulSoup
+from colorama import Fore, Style
+
+
+url = 'https://www.nsbm.ac.lk/category/news/'
+
+r = requests.get(url)
+
+soup = BeautifulSoup(r.text, 'html.parser')
+
+article = soup.find_all('article', class_ = 'category-news')
+
+news_list = []
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
+for news in article:
+        title = news.find('h2', class_ = 'entry-title').text # Grabbing the News title
+        image = news.find('img', class_ = 'wp-post-image')  # Grabbing the images of all the news
+        
+        news_dictionary = {
+            'title' : title,
+            'image' : image
+        }
+        
+        news_list.append(news_dictionary)
+        
+        print(news_list)
+
+        # print(Fore.BLUE + title + "\n" + Style.RESET_ALL)
