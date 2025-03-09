@@ -1,3 +1,7 @@
+# Redshark
+# Sehara Gishan Samarasinghe
+# Created : 9th May of 2025
+
 from flask import Flask, jsonify
 import requests
 from bs4 import BeautifulSoup
