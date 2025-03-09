@@ -1,8 +1,3 @@
-# NSBM OFFICIAL WEBSITE'S NEWS SCRAPING API
-# REDSHARK
-# SEHARA GISHAN SAMARASINGHE
-# CREATED ON : 9TH MARCH 2025
-
 from flask import Flask, jsonify
 import requests
 from bs4 import BeautifulSoup
@@ -22,8 +17,11 @@ def get_news():
 
     for news in articles:
         title = news.find('h2', class_='entry-title').text.strip()  # Grabbing Title 
-        image = news.find('img', class_='wp-post-image')['src'] if news.find('img') else None   # Grabbing Image
-
+        
+        # Try getting image from data-src first (for lazy-loaded images)
+        image_tag = news.find('img', class_='wp-post-image')
+        image = image_tag['data-src'] if image_tag and image_tag.has_attr('data-src') else image_tag['src'] if image_tag else None
+        
         news_list.append({'title': title, 'image': image})
 
     return jsonify(news_list)
