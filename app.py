@@ -6,7 +6,7 @@ from flask_cors import CORS
 app = Flask(__name__)
 CORS(app)  
 
-@app.route('/news', methods=['GET'])
+@app.route('/', methods=['GET'])
 def get_news():
     url = 'https://www.nsbm.ac.lk/category/news/'
     r = requests.get(url)
