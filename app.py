@@ -1,3 +1,8 @@
+# NSBM OFFICIAL WEBSITE'S NEWS SCRAPING API
+# REDSHARK
+# SEHARA GISHAN SAMARASINGHE
+# CREATED ON : 9TH MARCH 2025
+
 from flask import Flask, jsonify
 import requests
 from bs4 import BeautifulSoup
